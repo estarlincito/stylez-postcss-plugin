@@ -1,0 +1,84 @@
+{
+  "name": "@stylezjs/postcss-plugin",
+  "version": "0.0.1",
+  "description": "@stylezjs/postcss-plugin is a PostCSS plugin for integrating `@stylezjs/stylez` to generate static CSS styles. Stylez → 'Z' of Zero Runtime.",
+  "type": "module",
+  "main": "./dist/esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "start": "node --watch ./dist/esm/index.mjs",
+    "build": "eslint . && pnpm vite build",
+    "build:w": "vite build --watch",
+    "git": "rm -rf dist && pnpm build && read -p \"Enter commit message: \" msg; git add .; git commit -m \"$msg\"; git push -u origin main && npm publish --access public"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
+  "keywords": [
+    "@stylezjs",
+    "stylez",
+    "CSS",
+    "atomic CSS",
+    "utility",
+    "zero runtime",
+    "dynamic styles",
+    "class names",
+    "postcss",
+    "react",
+    "styled components",
+    "postcss-plugin"
+  ],
+  "author": {
+    "name": "Estarlin R",
+    "email": "dev@estarlincito.com",
+    "url": "https://estarlincito.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/estarlincito/stylez-postcss-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/estarlincito/stylez-postcss-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/estarlincito/stylez-postcss-plugin/issues"
+  },
+  "packageManager": "pnpm@10.4.1",
+  "peerDependencies": {
+    "@swc/core": "^1.11.4",
+    "fast-glob": "^3.3.3",
+    "postcss": "^8.5.3",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "@stylezjs/stylez": "^0.0.1"
+  },
+  "devDependencies": {
+    "@estarlincito/eslint": "^1.7.4",
+    "@types/node": "^22.13.5",
+    "csstype": "^3.1.3",
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "esbuild"
+    ]
+  }
+}
