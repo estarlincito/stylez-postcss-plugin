@@ -1,6 +1,6 @@
 {
   "name": "@stylezjs/postcss-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "@stylezjs/postcss-plugin is a PostCSS plugin for integrating `@stylezjs/stylez` to generate static CSS styles. Stylez → 'Z' of Zero Runtime.",
   "type": "module",
   "main": "./dist/esm/index.mjs",
@@ -57,7 +57,7 @@
     "url": "https://github.com/estarlincito/stylez-postcss-plugin/issues"
   },
   "packageManager": "pnpm@10.4.1",
-  "peerDependencies": {
+  "dependencies": {
     "@swc/core": "^1.11.4",
     "fast-glob": "^3.3.3",
     "postcss": "^8.5.3",
