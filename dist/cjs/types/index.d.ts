@@ -9,7 +9,7 @@ export interface Properties {
     type: 'KeyValueProperty';
     value: {
         value: string;
-        type: 'StringLiteral';
+        type: 'StringLiteral' | 'NumericLiteral';
     };
     key: {
         value: string;

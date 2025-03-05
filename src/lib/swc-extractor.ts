@@ -73,11 +73,12 @@ export async function extractStylesFromFiles(patterns: string[]) {
           if (isObj) {
             for (const prop of styleArg.expression.properties) {
               const isProp =
-                prop.type === 'KeyValueProperty' &&
-                prop.key &&
-                prop.key.type === 'Identifier' &&
-                prop.value &&
-                prop.value.type === 'StringLiteral';
+                (prop.type === 'KeyValueProperty' &&
+                  prop.key &&
+                  prop.key.type === 'Identifier' &&
+                  prop.value &&
+                  prop.value.type === 'StringLiteral') ||
+                prop.value.type === 'NumericLiteral';
 
               if (isProp) {
                 //generating :root var

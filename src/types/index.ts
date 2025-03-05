@@ -9,7 +9,7 @@ import { Node as Node_ } from '@swc/core';
 
 export interface Properties {
   type: 'KeyValueProperty';
-  value: { value: string; type: 'StringLiteral' };
+  value: { value: string; type: 'StringLiteral' | 'NumericLiteral' };
   key: { value: string; type: 'Identifier' };
 }
 

@@ -1,13 +1,13 @@
 import S from "node:fs/promises";
 import w from "@swc/core";
 import A from "fast-glob";
-import f from "postcss";
+import y from "postcss";
 import m from "./generate-id.mjs";
 import I from "./sorted-rules.mjs";
-const { glob: z } = A, c = [], v = f.rule({ selector: ":root" });
+const { glob: z } = A, c = [], v = y.rule({ selector: ":root" });
 let b = "stylez";
-async function L(j) {
-  const g = await z(j), y = /* @__PURE__ */ new Set(), n = /* @__PURE__ */ new Set();
+async function $(j) {
+  const g = await z(j), f = /* @__PURE__ */ new Set(), u = /* @__PURE__ */ new Set();
   for (const p of g) {
     let i = function(e) {
       if (!(!e || typeof e != "object")) {
@@ -18,9 +18,9 @@ async function L(j) {
           const r = e.arguments && e.arguments[0];
           if (r && r.expression.type === "ObjectExpression") {
             for (const t of r.expression.properties)
-              if (t.type === "KeyValueProperty" && t.key && t.key.type === "Identifier" && t.value && t.value.type === "StringLiteral") {
+              if (t.type === "KeyValueProperty" && t.key && t.key.type === "Identifier" && t.value && t.value.type === "StringLiteral" || t.value.type === "NumericLiteral") {
                 const o = m(t.value.value, "--z");
-                y.has(o) || (y.add(o), v.append({ prop: o, value: t.value.value }));
+                f.has(o) || (f.add(o), v.append({ prop: o, value: t.value.value }));
                 const h = t.key.value.replace(
                   /([A-Z])/g,
                   (a) => `-${a.toLowerCase()}`
@@ -28,9 +28,9 @@ async function L(j) {
                   JSON.stringify({ [t.key.value]: t.value.value }),
                   "z_"
                 );
-                if (!n.has(l)) {
-                  n.add(l);
-                  const a = f.rule({ selector: `.${l}` });
+                if (!u.has(l)) {
+                  u.add(l);
+                  const a = y.rule({ selector: `.${l}` });
                   a.append({ prop: h, value: `var(${o})` }), c.push(a);
                 }
               }
@@ -49,9 +49,9 @@ async function L(j) {
     });
     i(x);
   }
-  const u = f.root();
-  return c.push(v), I(c).forEach((p) => u.append(p)), u;
+  const n = y.root();
+  return c.push(v), I(c).forEach((p) => n.append(p)), n;
 }
 export {
-  L as extractStylesFromFiles
+  $ as extractStylesFromFiles
 };
